@@ -1,6 +1,7 @@
 package com.sistema.elos.aluno;
 
 import com.sistema.elos.endereco.Endereco;
+import com.sistema.elos.frenquecia.Frequencia;
 import com.sistema.elos.responsavel.Responsavel;
 import com.sistema.elos.status.Status;
 import jakarta.persistence.*;
@@ -16,6 +17,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "alunos")
@@ -81,5 +84,9 @@ public class Aluno {
 
     @UpdateTimestamp
     private Instant atualizadoEm;
+
+    @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)
+    private List<Frequencia> frequencias = new ArrayList<>();
+
 }
 

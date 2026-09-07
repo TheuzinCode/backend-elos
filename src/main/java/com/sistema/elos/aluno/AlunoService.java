@@ -47,8 +47,6 @@ public class AlunoService {
 
         CriarNovoAlunoResponse alunoResponse = alunoMapper.toResponseDTO(alunoSalvo);
 
-
-
         return new CriarNovoAlunoResponse(
                 alunoResponse.id(),
                 alunoResponse.status(),

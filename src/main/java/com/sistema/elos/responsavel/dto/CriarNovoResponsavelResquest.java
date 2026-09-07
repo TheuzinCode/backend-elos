@@ -1,6 +1,9 @@
 package com.sistema.elos.responsavel.dto;
 
 import com.sistema.elos.endereco.dto.CriarEnderecoRequest;
+import com.sistema.elos.status.Status;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -10,6 +13,9 @@ public record CriarNovoResponsavelResquest(
 
         @NotBlank(message = "CAMPO NOME OBRIGATORIO")
         String nome,
+
+        @NotNull(message = "CAMPO STATUS OBRIGATORIO")
+        Status status,
 
         @NotBlank(message = "CAMPO CPF OBRIGATORIO")
         String cpf,

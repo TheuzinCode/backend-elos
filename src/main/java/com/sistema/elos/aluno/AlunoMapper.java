@@ -1,10 +1,13 @@
 package com.sistema.elos.aluno;
 
+import com.sistema.elos.aluno.dto.AlunoResponseResponsavel;
 import com.sistema.elos.aluno.dto.CriarNovoAlunoRequest;
 import com.sistema.elos.aluno.dto.CriarNovoAlunoResponse;
 import com.sistema.elos.aluno.dto.DetalhesAlunosResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+
+import java.util.List;
 
 
 @Mapper(componentModel = "spring")
@@ -19,4 +22,5 @@ public interface AlunoMapper {
 
     DetalhesAlunosResponse toDetalhesAlunosResponseDTO(Aluno aluno);
 
+    List<AlunoResponseResponsavel> toAlunoResponseResponsavel(List<Aluno> aluno);
 }

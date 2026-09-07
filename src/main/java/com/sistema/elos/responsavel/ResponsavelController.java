@@ -1,16 +1,17 @@
 package com.sistema.elos.responsavel;
 
+import com.sistema.elos.configuracao.BusinessException;
 import com.sistema.elos.responsavel.dto.CriarNovoResponsavelResponse;
 import com.sistema.elos.responsavel.dto.CriarNovoResponsavelResquest;
+import com.sistema.elos.responsavel.dto.DetalhesResponsavelResponse;
+import com.sistema.elos.responsavel.dto.ListarTodosResponsaveisResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/responsavel")
@@ -29,5 +30,21 @@ public class ResponsavelController {
 
         return ResponseEntity.created(location).body(entity);
 
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ListarTodosResponsaveisResponse>> listarTodosResponsaveis(){
+        return ResponseEntity.ok(responsavelService.listarTodosResponsaveis());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscarResponsavelPorId(@PathVariable Long id){
+        try{
+            DetalhesResponsavelResponse responsavelDTO = responsavelService.buscarResponsavelPorId(id);
+            return ResponseEntity.ok(responsavelDTO);
+
+        } catch (BusinessException e) {
+            return ResponseEntity.badRequest().body(new BusinessException(e.getMessage()));
+        }
     }
 }

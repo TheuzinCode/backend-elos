@@ -2,6 +2,7 @@ package com.sistema.elos.responsavel;
 
 import com.sistema.elos.aluno.Aluno;
 import com.sistema.elos.endereco.Endereco;
+import com.sistema.elos.status.Status;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -28,6 +29,10 @@ public class Responsavel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull(message = "CAMPO STATUS OBRIGATORIO")
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     @NotBlank(message = "CAMPO NOME OBRIGATORIO")
     private String nome;

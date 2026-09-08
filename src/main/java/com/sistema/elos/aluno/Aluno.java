@@ -2,6 +2,7 @@ package com.sistema.elos.aluno;
 
 import com.sistema.elos.endereco.Endereco;
 import com.sistema.elos.frenquecia.Frequencia;
+import com.sistema.elos.historicoaluno.HistoricoAluno;
 import com.sistema.elos.responsavel.Responsavel;
 import com.sistema.elos.status.Status;
 import jakarta.persistence.*;
@@ -87,6 +88,9 @@ public class Aluno {
 
     @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)
     private List<Frequencia> frequencias = new ArrayList<>();
+
+    @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)
+    private List<HistoricoAluno> HistoricoAluno = new ArrayList<>();
 
 }
 

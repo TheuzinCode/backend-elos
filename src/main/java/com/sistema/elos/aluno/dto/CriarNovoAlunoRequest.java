@@ -46,7 +46,9 @@ public record CriarNovoAlunoRequest(
 
         Long responsavelId,
 
-        CriarEnderecoRequest endereco
+        CriarEnderecoRequest endereco,
+
+        Long unidadeId
 
 
 ) {

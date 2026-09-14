@@ -21,6 +21,7 @@ public record CriarNovoAlunoResponse(
         String telefoneCelular2,
         String escolaridade,
         ResponsavelResponseAluno responsavel,
-        CriarEnderecoResponse endereco
+        CriarEnderecoResponse endereco,
+        Long unidadeId
 ) {
 }

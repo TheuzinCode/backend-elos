@@ -12,6 +12,8 @@ import com.sistema.elos.responsavel.Responsavel;
 import com.sistema.elos.responsavel.ResponsavelMapper;
 import com.sistema.elos.responsavel.ResponsavelService;
 import com.sistema.elos.responsavel.dto.ResponsavelResponseAluno;
+import com.sistema.elos.unidade.Unidade;
+import com.sistema.elos.unidade.UnidadeRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -27,14 +29,17 @@ public class AlunoService {
     private EnderecoMapper enderecoMapper;
     private ResponsavelMapper responsavelMapper;
     private ResponsavelService responsavelService;
+    private UnidadeRepository unidadeRepository;
 
 
     public CriarNovoAlunoResponse criarNovoAluno(CriarNovoAlunoRequest request){
 
         Responsavel responsavel = responsavelService.buscarPorIdClasseAluno(request.responsavelId());
         Endereco endereco = enderecoMapper.toEntity(request.endereco());
+        Unidade unidade = unidadeRepository.findById(request.unidadeId()).orElseThrow(() -> new BusinessException("UNIDADE NÃO ENCONTRADA"));
         Aluno aluno = alunoMapper.toEntity(request);
 
+        aluno.setUnidade(unidade);
         aluno.setEndereco(endereco);
         aluno.setEmail(request.email().toLowerCase(Locale.ROOT));
 
@@ -62,7 +67,8 @@ public class AlunoService {
                 alunoResponse.telefoneCelular2(),
                 alunoResponse.escolaridade(),
                 responsavelResponseAluno,
-                criarEnderecoResponse
+                criarEnderecoResponse,
+                alunoSalvo.getUnidade().getId()
         );
     }
 
@@ -78,7 +84,8 @@ public class AlunoService {
                 aluno.getTelefoneCelular(),
                 aluno.getEmail(),
                 aluno.getStatus(),
-                aluno.getCriadoEm()
+                aluno.getCriadoEm(),
+                aluno.getUnidade().getId()
         )).toList();
     }
 
@@ -107,7 +114,8 @@ public class AlunoService {
                 alunoEntity.telefoneCelular2(),
                 alunoEntity.escolaridade(),
                 responsavelResponseAluno,
-                criarEnderecoResponse
+                criarEnderecoResponse,
+                aluno.getUnidade().getId()
         );
     }
 }

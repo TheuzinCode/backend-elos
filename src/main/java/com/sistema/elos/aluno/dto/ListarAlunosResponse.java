@@ -11,7 +11,8 @@ public record ListarAlunosResponse(
         String telefoneCelular,
         String email,
         Status status,
-        Instant criadoEm
+        Instant criadoEm,
+        Long unidadeId
 
 ) {
 }

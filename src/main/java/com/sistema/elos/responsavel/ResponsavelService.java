@@ -1,6 +1,5 @@
 package com.sistema.elos.responsavel;
 
-import com.sistema.elos.aluno.Aluno;
 import com.sistema.elos.aluno.AlunoMapper;
 import com.sistema.elos.aluno.dto.AlunoResponseResponsavel;
 import com.sistema.elos.configuracao.BusinessException;
@@ -11,18 +10,22 @@ import com.sistema.elos.responsavel.dto.CriarNovoResponsavelResponse;
 import com.sistema.elos.responsavel.dto.CriarNovoResponsavelResquest;
 import com.sistema.elos.responsavel.dto.DetalhesResponsavelResponse;
 import com.sistema.elos.responsavel.dto.ListarTodosResponsaveisResponse;
+import com.sistema.elos.unidade.Unidade;
+import com.sistema.elos.unidade.UnidadeRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class ResponsavelService {
 
     private ResponsavelRespository responsavelRespository;
+    private UnidadeRepository unidadeRepository;
     private ResponsavelMapper responsavelMapper;
     private EnderecoMapper enderecoMapper;
     private AlunoMapper alunoMapper;
@@ -44,6 +47,11 @@ public class ResponsavelService {
         responsavel.setEndereco(endereco);
         responsavel.setEmail(request.email().toLowerCase(Locale.ROOT));
 
+        Unidade unidade = unidadeRepository.findById(request.unidadeId())
+                .orElseThrow(() -> new BusinessException("UNIDADE NÃO ENCONTRADA"));
+
+        responsavel.setUnidade(unidade);
+
         Responsavel responsavelSalvo = responsavelRespository.save(responsavel);
 
         CriarEnderecoResponse criarEnderecoResponse = enderecoMapper.toCriarEnderecoResponseDTO(responsavelSalvo.getEndereco());
@@ -61,7 +69,8 @@ public class ResponsavelService {
                 responsavelSalvo.getTelefoneCelular(),
                 responsavelSalvo.getTelefoneCelular2(),
                 responsavelSalvo.getEscolaridade(),
-                criarEnderecoResponse
+                criarEnderecoResponse,
+                responsavel.getUnidade().getId()
         );
     }
 
@@ -77,7 +86,8 @@ public class ResponsavelService {
                 responsavel.getTelefoneCelular(),
                 responsavel.getEmail(),
                 responsavel.getAlunos().size(),
-                responsavel.getStatus()
+                responsavel.getStatus(),
+                responsavel.getUnidade().getId()
         )).toList();
     }
 
@@ -107,7 +117,8 @@ public class ResponsavelService {
                 responsavelDTO.telefoneCelular2(),
                 responsavelDTO.escolaridade(),
                 alunoDTO,
-                criarEnderecoResponse
+                criarEnderecoResponse,
+                responsavel.getUnidade().getId()
         );
     }
 

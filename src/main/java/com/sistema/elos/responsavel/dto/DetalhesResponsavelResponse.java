@@ -22,6 +22,7 @@ public record DetalhesResponsavelResponse(
         String telefoneCelular2,
         String escolaridade,
         List<AlunoResponseResponsavel> alunos,
-        CriarEnderecoResponse endereco
+        CriarEnderecoResponse endereco,
+        Long unidadeId
 ) {
 }

@@ -9,7 +9,8 @@ public record ListarTodosResponsaveisResponse(
         String telefone,
         String email,
         Integer quantidade,
-        Status status
+        Status status,
+        Long unidadeId
 
 ) {
 

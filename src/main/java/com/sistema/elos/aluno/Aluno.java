@@ -5,6 +5,7 @@ import com.sistema.elos.frenquecia.Frequencia;
 import com.sistema.elos.historicoaluno.HistoricoAluno;
 import com.sistema.elos.responsavel.Responsavel;
 import com.sistema.elos.status.Status;
+import com.sistema.elos.unidade.Unidade;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -91,6 +92,10 @@ public class Aluno {
 
     @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)
     private List<HistoricoAluno> HistoricoAluno = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "unidade_id")
+    private Unidade unidade;
 
 }
 

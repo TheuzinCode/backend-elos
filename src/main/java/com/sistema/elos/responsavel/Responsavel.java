@@ -3,6 +3,7 @@ package com.sistema.elos.responsavel;
 import com.sistema.elos.aluno.Aluno;
 import com.sistema.elos.endereco.Endereco;
 import com.sistema.elos.status.Status;
+import com.sistema.elos.unidade.Unidade;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -81,6 +82,9 @@ public class Responsavel {
     @UpdateTimestamp
     private Instant atualizadoEm;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "unidade_id")
+    private Unidade unidade;
 
     public void adicionarAluno(Aluno aluno){
         alunos.add(aluno);

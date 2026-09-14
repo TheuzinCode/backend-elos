@@ -47,6 +47,8 @@ public record CriarNovoResponsavelResquest(
         @NotBlank(message = "CAMPO ESCOLARIDADE OBRIGATORIO")
         String escolaridade,
 
-        CriarEnderecoRequest endereco
+        CriarEnderecoRequest endereco,
+
+        Long unidadeId
 ) {
 }

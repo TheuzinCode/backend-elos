@@ -1,5 +1,6 @@
 package com.sistema.elos.formacao;
 
+import com.sistema.elos.aluno.Aluno;
 import com.sistema.elos.modulo.Modulo;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -37,5 +38,9 @@ public class Formacao {
             inverseJoinColumns  = @JoinColumn(name = "moduloId")
     )
     private List<Modulo> modulos = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "aluno_id")
+    private Aluno aluno;
 
 }

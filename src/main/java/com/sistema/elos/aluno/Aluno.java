@@ -1,6 +1,7 @@
 package com.sistema.elos.aluno;
 
 import com.sistema.elos.endereco.Endereco;
+import com.sistema.elos.formacao.Formacao;
 import com.sistema.elos.frenquecia.Frequencia;
 import com.sistema.elos.historicoaluno.HistoricoAluno;
 import com.sistema.elos.responsavel.Responsavel;
@@ -97,5 +98,7 @@ public class Aluno {
     @JoinColumn(name = "unidade_id")
     private Unidade unidade;
 
+    @OneToMany(mappedBy = "aluno")
+    private List<Formacao> formacoes;
 }
 

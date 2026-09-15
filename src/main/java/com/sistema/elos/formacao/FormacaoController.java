@@ -2,13 +2,13 @@ package com.sistema.elos.formacao;
 
 import com.sistema.elos.formacao.dto.CriarNovaFormacaoRequest;
 import com.sistema.elos.formacao.dto.CriarNovaFormacaoResponse;
+import com.sistema.elos.formacao.dto.ListaFormacoes;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/formacoes")
@@ -20,5 +20,10 @@ public class FormacaoController {
     @PostMapping("/novo-formacao")
     public ResponseEntity<CriarNovaFormacaoResponse> criarNovaFormacao(@RequestBody @Valid CriarNovaFormacaoRequest request){
         return ResponseEntity.ok().body(formacaoService.criarNovaFormacao(request));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<List<ListaFormacoes>> listarFormacoesAluno(@PathVariable Long id){
+        return ResponseEntity.ok(formacaoService.listarFormacoesAluno(id));
     }
 }

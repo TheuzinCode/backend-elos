@@ -10,6 +10,9 @@ import java.util.List;
 
 public record CriarNovaFormacaoRequest(
 
+
+        Long alunoId,
+
         @NotBlank
         String nome,
 

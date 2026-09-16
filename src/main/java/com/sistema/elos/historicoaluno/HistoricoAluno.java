@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.util.UUID;
 import java.time.Instant;
 
 @Entity
@@ -19,8 +20,8 @@ import java.time.Instant;
 public class HistoricoAluno {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @CreationTimestamp
     private Instant criadoEm;

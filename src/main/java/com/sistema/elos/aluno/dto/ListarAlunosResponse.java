@@ -2,10 +2,11 @@ package com.sistema.elos.aluno.dto;
 
 import com.sistema.elos.status.Status;
 
+import java.util.UUID;
 import java.time.Instant;
 
 public record ListarAlunosResponse(
-        Long id,
+        UUID id,
         String nome,
         String nomeResponsavel,
         String telefoneCelular,

@@ -10,6 +10,7 @@ import com.sistema.elos.historicoaluno.dto.ListarHistoricoAlunoResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
 import java.util.List;
 
 @Service
@@ -35,7 +36,7 @@ public class HistoricoAlunoService {
         return historicoAlunoMapper.toCadastrarHistoricoAlunoResponse(historicoAlunoSalvo);
     }
 
-    public List<ListarHistoricoAlunoResponse> listarHistoricoPorAluno(Long alunoId){
+    public List<ListarHistoricoAlunoResponse> listarHistoricoPorAluno(UUID alunoId){
 
         List<HistoricoAluno> listaHistoricoAluno = historicoAlunoRepository.findByAlunoId(alunoId);
 

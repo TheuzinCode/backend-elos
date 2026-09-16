@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
 import java.net.URI;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class ResponsavelController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> buscarResponsavelPorId(@PathVariable Long id){
+    public ResponseEntity<?> buscarResponsavelPorId(@PathVariable UUID id){
         try{
             DetalhesResponsavelResponse responsavelDTO = responsavelService.buscarResponsavelPorId(id);
             return ResponseEntity.ok(responsavelDTO);

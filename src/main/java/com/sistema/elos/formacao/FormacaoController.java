@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
 import java.util.List;
 
 @RestController
@@ -23,7 +24,7 @@ public class FormacaoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<List<ListaFormacoes>> listarFormacoesAluno(@PathVariable Long id){
+    public ResponseEntity<List<ListaFormacoes>> listarFormacoesAluno(@PathVariable UUID id){
         return ResponseEntity.ok(formacaoService.listarFormacoesAluno(id));
     }
 }

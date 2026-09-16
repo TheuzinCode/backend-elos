@@ -14,6 +14,7 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
@@ -28,7 +29,7 @@ public class ResponsavelService {
     private EnderecoMapper enderecoMapper;
 
     //USANDO NA CLASSE ALUNO SERVICE PARA CRIAÇÃO DO ALUNO
-    public Responsavel buscarPorIdClasseAluno(Long id){
+    public Responsavel buscarPorIdClasseAluno(UUID id){
         Responsavel responsavel = responsavelRespository.findById(id).orElseThrow(
                 () -> new BusinessException("ERRO AO ENCONTRAR O RESPONSAVEL"));
         return responsavel;
@@ -89,7 +90,7 @@ public class ResponsavelService {
     }
 
 
-    public DetalhesResponsavelResponse buscarResponsavelPorId(Long id){
+    public DetalhesResponsavelResponse buscarResponsavelPorId(UUID id){
 
         Responsavel responsavel = responsavelRespository.findById(id)
                 .orElseThrow(() -> new BusinessException("RESPONSAVEL NÃO ENCONTRADO"));

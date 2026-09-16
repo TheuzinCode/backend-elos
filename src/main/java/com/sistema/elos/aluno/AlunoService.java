@@ -17,6 +17,7 @@ import com.sistema.elos.unidade.UnidadeRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
 import java.util.List;
 import java.util.Locale;
 
@@ -89,7 +90,7 @@ public class AlunoService {
         )).toList();
     }
 
-    public DetalhesAlunosResponse buscarAlunoPorId(Long id){
+    public DetalhesAlunosResponse buscarAlunoPorId(UUID id){
 
         Aluno aluno = alunoRepository.findById(id).orElseThrow(
                 () -> new BusinessException("ERRO AO ENCONTRAR O ALUNO"));

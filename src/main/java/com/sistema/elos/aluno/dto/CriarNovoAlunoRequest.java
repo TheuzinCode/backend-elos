@@ -5,6 +5,7 @@ import com.sistema.elos.status.Status;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.UUID;
 import java.time.LocalDate;
 
 public record CriarNovoAlunoRequest(
@@ -44,7 +45,7 @@ public record CriarNovoAlunoRequest(
         @NotBlank(message = "CAMPO ESCOLARIDADE OBRIGATORIO")
         String escolaridade,
 
-        Long responsavelId,
+        UUID responsavelId,
 
         CriarEnderecoRequest endereco,
 

@@ -11,6 +11,7 @@ import com.sistema.elos.modulo.ModuloRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +59,7 @@ public class FormacaoService {
     }
 
 
-    public List<ListaFormacoes> listarFormacoesAluno(Long id){
+    public List<ListaFormacoes> listarFormacoesAluno(UUID id){
 
         Aluno aluno = alunoRepository.findById(id)
                 .orElseThrow(() -> new BusinessException("ALUNO NÃO ENCONTRADO"));

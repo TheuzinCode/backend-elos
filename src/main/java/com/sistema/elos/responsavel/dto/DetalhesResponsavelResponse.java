@@ -4,11 +4,12 @@ import com.sistema.elos.aluno.dto.AlunoResponseResponsavel;
 import com.sistema.elos.endereco.dto.CriarEnderecoResponse;
 import com.sistema.elos.status.Status;
 
+import java.util.UUID;
 import java.time.LocalDate;
 import java.util.List;
 
 public record DetalhesResponsavelResponse(
-        Long id,
+        UUID id,
         Status status,
         String nome,
         String cpf,

@@ -1,10 +1,11 @@
 package com.sistema.elos.parcela.dto;
 
+import java.util.UUID;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public record CriarParcelaResponse(
-        Long alunoId,
+        UUID alunoId,
         Integer quantidadeParcelas,
         BigDecimal valorParcela,
         BigDecimal valorTotal,

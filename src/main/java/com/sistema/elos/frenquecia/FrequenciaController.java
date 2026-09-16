@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
 import java.util.List;
 
 @RestController
@@ -19,7 +20,7 @@ public class FrequenciaController {
     private FrequenciaService frequenciaService;
 
     @GetMapping("/{alunoId}")
-    public List<ListarFrequenciaResponse> listarFrenquencia(@PathVariable Long alunoId){
+    public List<ListarFrequenciaResponse> listarFrenquencia(@PathVariable UUID alunoId){
         return frequenciaService.listarFrequenciaPorAluno(alunoId);
     }
 

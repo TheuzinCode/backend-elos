@@ -14,6 +14,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.util.UUID;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -28,8 +29,8 @@ import java.util.List;
 public class Responsavel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @NotNull(message = "CAMPO STATUS OBRIGATORIO")
     @Enumerated(EnumType.STRING)

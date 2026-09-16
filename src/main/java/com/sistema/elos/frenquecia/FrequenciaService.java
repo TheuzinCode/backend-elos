@@ -9,6 +9,7 @@ import com.sistema.elos.frenquecia.dto.ListarFrequenciaResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
 import java.util.List;
 
 @Service
@@ -19,7 +20,7 @@ public class FrequenciaService {
     private FrequenciaRepository repository;
     private AlunoRepository alunoRepository;
 
-    public List<ListarFrequenciaResponse> listarFrequenciaPorAluno(Long alunoId){
+    public List<ListarFrequenciaResponse> listarFrequenciaPorAluno(UUID alunoId){
 
         List<Frequencia> frequencias = repository.findByAlunoId(alunoId);
 

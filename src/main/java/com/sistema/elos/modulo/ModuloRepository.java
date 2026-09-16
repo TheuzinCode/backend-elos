@@ -1,8 +1,9 @@
 package com.sistema.elos.modulo;
 
+import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ModuloRepository extends JpaRepository<Modulo, Long> {
+public interface ModuloRepository extends JpaRepository<Modulo, UUID> {
 }

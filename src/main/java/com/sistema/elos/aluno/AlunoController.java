@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
 import java.net.URI;
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class AlunoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> buscarPorId(@PathVariable Long id){
+    public ResponseEntity<?> buscarPorId(@PathVariable UUID id){
 
         try{
             DetalhesAlunosResponse entity = alunoService.buscarAlunoPorId(id);

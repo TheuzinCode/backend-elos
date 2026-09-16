@@ -1,5 +1,6 @@
 package com.sistema.elos.historicoaluno.dto;
 
+import java.util.UUID;
 import com.sistema.elos.historicoaluno.CategoriaHistoricoAluno;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -7,7 +8,7 @@ import jakarta.validation.constraints.NotNull;
 public record CadastrarHistoricoAlunoRequest(
 
         @NotNull
-        Long alunoId,
+        UUID alunoId,
 
         CategoriaHistoricoAluno categoriaHistoricoAluno,
 

@@ -1,7 +1,5 @@
 package com.sistema.elos.responsavel;
 
-import com.sistema.elos.aluno.AlunoMapper;
-import com.sistema.elos.aluno.dto.AlunoResponseResponsavel;
 import com.sistema.elos.configuracao.BusinessException;
 import com.sistema.elos.endereco.Endereco;
 import com.sistema.elos.endereco.EnderecoMapper;
@@ -28,7 +26,6 @@ public class ResponsavelService {
     private UnidadeRepository unidadeRepository;
     private ResponsavelMapper responsavelMapper;
     private EnderecoMapper enderecoMapper;
-    private AlunoMapper alunoMapper;
 
     //USANDO NA CLASSE ALUNO SERVICE PARA CRIAÇÃO DO ALUNO
     public Responsavel buscarPorIdClasseAluno(Long id){
@@ -94,33 +91,10 @@ public class ResponsavelService {
 
     public DetalhesResponsavelResponse buscarResponsavelPorId(Long id){
 
-        Responsavel responsavel = responsavelRespository.findById(id).orElseThrow(() -> new BusinessException("RESPONSAVEL NÃO ENCONTRADO"));
+        Responsavel responsavel = responsavelRespository.findById(id)
+                .orElseThrow(() -> new BusinessException("RESPONSAVEL NÃO ENCONTRADO"));
 
-        DetalhesResponsavelResponse responsavelDTO = responsavelMapper.toDetalhesResponsavelResponse(responsavel);
-
-
-        CriarEnderecoResponse criarEnderecoResponse = enderecoMapper.toCriarEnderecoResponseDTO(responsavel.getEndereco());
-
-        List<AlunoResponseResponsavel> alunoDTO = alunoMapper.toAlunoResponseResponsavel(responsavel.getAlunos());
-
-        return new DetalhesResponsavelResponse(
-                responsavelDTO.id(),
-                responsavelDTO.status(),
-                responsavelDTO.nome(),
-                responsavelDTO.cpf(),
-                responsavelDTO.registroGeral(),
-                responsavelDTO.dataNascimento(),
-                responsavelDTO.genero(),
-                responsavelDTO.estadoCivil(),
-                responsavelDTO.escolaridade(),
-                responsavelDTO.telefoneResidencial(),
-                responsavelDTO.telefoneCelular(),
-                responsavelDTO.telefoneCelular2(),
-                responsavelDTO.escolaridade(),
-                alunoDTO,
-                criarEnderecoResponse,
-                responsavel.getUnidade().getId()
-        );
+        return responsavelMapper.toDetalhesResponsavelResponse(responsavel);
     }
 
 }

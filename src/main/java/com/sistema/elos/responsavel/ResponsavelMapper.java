@@ -18,5 +18,6 @@ public interface ResponsavelMapper {
 
     CriarNovoResponsavelResponse toCriarNovoResponsavelResponse(Responsavel responsavel);
 
+    @Mapping(source = "unidade.id", target = "unidadeId")
     DetalhesResponsavelResponse toDetalhesResponsavelResponse(Responsavel responsavel);
 }

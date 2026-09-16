@@ -4,6 +4,7 @@ import com.sistema.elos.endereco.Endereco;
 import com.sistema.elos.formacao.Formacao;
 import com.sistema.elos.frenquecia.Frequencia;
 import com.sistema.elos.historicoaluno.HistoricoAluno;
+import com.sistema.elos.parcela.Parcela;
 import com.sistema.elos.responsavel.Responsavel;
 import com.sistema.elos.status.Status;
 import com.sistema.elos.unidade.Unidade;
@@ -100,5 +101,10 @@ public class Aluno {
 
     @OneToMany(mappedBy = "aluno")
     private List<Formacao> formacoes;
+
+    @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Parcela> parcelas = new ArrayList<>();
+
+
 }
 

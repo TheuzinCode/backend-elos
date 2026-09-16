@@ -98,6 +98,7 @@ public class ResponsavelService {
 
         DetalhesResponsavelResponse responsavelDTO = responsavelMapper.toDetalhesResponsavelResponse(responsavel);
 
+
         CriarEnderecoResponse criarEnderecoResponse = enderecoMapper.toCriarEnderecoResponseDTO(responsavel.getEndereco());
 
         List<AlunoResponseResponsavel> alunoDTO = alunoMapper.toAlunoResponseResponsavel(responsavel.getAlunos());

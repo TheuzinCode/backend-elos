@@ -3,6 +3,7 @@ package com.sistema.elos.unidade;
 import com.sistema.elos.aluno.Aluno;
 import com.sistema.elos.parcela.Parcela;
 import com.sistema.elos.responsavel.Responsavel;
+import com.sistema.elos.usuario.Usuario;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -46,6 +47,8 @@ public class Unidade {
     @OneToMany(mappedBy = "unidade", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Parcela> parcelas = new ArrayList<>();
 
+    @OneToMany(mappedBy = "unidade", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Usuario> usuario = new ArrayList<>();
 
 
 }

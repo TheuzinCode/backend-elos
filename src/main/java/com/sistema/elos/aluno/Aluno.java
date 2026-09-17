@@ -1,5 +1,6 @@
 package com.sistema.elos.aluno;
 
+import com.sistema.elos.contrato.Contrato;
 import com.sistema.elos.endereco.Endereco;
 import com.sistema.elos.formacao.Formacao;
 import com.sistema.elos.frenquecia.Frequencia;
@@ -106,6 +107,8 @@ public class Aluno {
     @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Parcela> parcelas = new ArrayList<>();
 
+    @OneToMany(mappedBy = "aluno")
+    private List<Contrato> contratos;
 
 }
 

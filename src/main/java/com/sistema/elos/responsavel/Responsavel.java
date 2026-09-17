@@ -1,6 +1,7 @@
 package com.sistema.elos.responsavel;
 
 import com.sistema.elos.aluno.Aluno;
+import com.sistema.elos.contrato.Contrato;
 import com.sistema.elos.endereco.Endereco;
 import com.sistema.elos.status.Status;
 import com.sistema.elos.unidade.Unidade;
@@ -86,6 +87,10 @@ public class Responsavel {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "unidade_id")
     private Unidade unidade;
+
+    @OneToMany(mappedBy = "responsavel")
+    private List<Contrato> contrato;
+
 
     public void adicionarAluno(Aluno aluno){
         alunos.add(aluno);

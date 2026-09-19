@@ -48,7 +48,6 @@ public class ContratoService {
         Contrato contrato = new Contrato();
 
         contrato.setNumeroContrato(numero);
-        contrato.setStatus(request.status());
         contrato.setAluno(aluno);
         contrato.setResponsavel(responsavel);
         contrato.setEducador(educador);

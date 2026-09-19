@@ -39,7 +39,7 @@ public class Contrato {
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private Status status = Status.ATIVO;
 
     @ManyToOne
     @JoinColumn(name = "aluno_id")
